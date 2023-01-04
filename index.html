@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Jogo Da Velha</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <article class="panel">
+    <p class="game-narration">Começar a Jogar...</p>
+    
+    <form class="caixa">
+      <input id="x_campo" type="text" placeholder="Player 1" name="xx" required><input style="margin-bottom: 1em;" id="o_campo" type="text" placeholder="Player 2" name="oo" required> 
+    </form> 
+      
+      <div>
+        <button type="button" id="play" onclick=" tic_tac_toe.start()">PLAY</button>
+        
+        <select id="change" onchange="update()">
+          <option value="1">joga contra máquina</option>
+          <option value="2" selected>joga contra um amigo</option>
+        </select>
+      </div>
+  </article>
+  
+  <section class="ba">
+    <article class="banner">
+      <h1 id="s"></h1>
+      <h2 id="w"></h2>
+    </article>
+    <div class='game'></div>
+  </section>
+  
+  <article class="placar">
+    <p id="score_x">✕ - 0</p>
+    <p id="score_o">〇 - 0</p>
+  </article>
+  
+  <script src="./jogodavelha.js"></script>
+  <script>
+    function update() {
+      if (document.getElementById('change').value == 1) {
+        machine();
+      } else {
+        friend();
+      }
+    }
+    
+    function machine() {
+      tic_tac_toe.turn = true;
+    }
+    
+    function friend() {
+      tic_tac_toe.turn = false;
+    }
+  </script>
+</body>
+</html>
